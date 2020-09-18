@@ -1,41 +1,48 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 
 const ExpenseDashboardPage = () => (
   <div>
-    This is form my dashboard component
+    This is from my dashboard component
   </div>
 );
 
 const AddDashboardPage = () => (
   <div>
-    This is form my add expense component
+    This is from my add expense component
   </div>
 );
 
 const EditExpensePage = () => (
   <div>
-    This is form my edit expense component
+    This is from my edit expense component
   </div>
 );
 
 const HelpPage = () => (
   <div>
-    This is form my help component
+    This is from my help component
+  </div>
+);
+
+const NotFoundPage = () => (
+  <div>
+    404!
   </div>
 );
 
 const routes = (
   <BrowserRouter>
-    <div>
+    <Switch>
       <Route exact path="/" component={ExpenseDashboardPage} />
       <Route path="/create" component={AddDashboardPage} />
       <Route path="/edit" component={EditExpensePage} />
       <Route path="/help" component={HelpPage} />
-    </div>
+      <Route component={NotFoundPage} />
+    </Switch>
   </BrowserRouter>
 );
 
