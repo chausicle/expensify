@@ -14,13 +14,17 @@ const decrementCount = ({ decrementBy = 1 } = {}) => ({
 const setCount = ({ count }) => ({
   type: 'SET',
   count
-})
+});
 
 const resetCount = () => ({
   type: 'RESET'
-})
+});
 
-const store = createStore((state = { count: 0 }, action) => {
+// Reducers
+// 1. Reducers are pure functions
+// 2. Never change state or action
+
+const countReducer = (state = { count: 0 }, action) => {
   switch (action.type) {
     case 'INCREMENT':
       return {
@@ -41,7 +45,10 @@ const store = createStore((state = { count: 0 }, action) => {
     default:
       return state;
   }
-});
+};
+
+// Store instance
+const store = createStore(countReducer);
 
 // Watch changes in store
 const unsubscribe = store.subscribe(() => {
